@@ -22,6 +22,7 @@ RUN   apk update \
     &&   apk add ca-certificates wget \                                                                                                                                                                                                      
     &&   update-ca-certificates
 
+RUN	apk add --no-cache bash
+
 RUN wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.38.zip
 RUN unzip Trimmomatic-0.38.zip && rm Trimmomatic-0.38.zip
-ENV TRIMMOMATIC_HOME /Trimmomatic-0.38/

@@ -3,6 +3,14 @@ workflow toy {
     Array[File] fastqs
     Int min_length
 
+    call trim {
+        input: fastqs=fastqs,
+            min_length=min_length
+    }
+
+    output {
+        Array[File] output = trim.files
+    }
 }
 
 task trim {
@@ -10,7 +18,7 @@ task trim {
     Int min_length
     
     command {
-        java -jar $TRIMMOMATIC_HOME/trimmomatic-0.38.jar PE -phred33 ${fastqs[0]} ${fastqs[1]} out1.fastq.gz out1.unpaired.fastq.gz out2.fastq.gz out2.unpaired.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:30 MINLEN:${min_length}
+        java -jar /Trimmomatic-0.38/trimmomatic-0.38.jar PE -phred33 ${fastqs[0]} ${fastqs[1]} out1.fastq.gz out1.unpaired.fastq.gz out2.fastq.gz out2.unpaired.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:30 MINLEN:${min_length}
     }
 
     output{
@@ -18,6 +26,6 @@ task trim {
     }
 
     runtime {
-        docker: "quay.io/gabdank/toy:v1"
+        docker: "quay.io/gabdank/toy:v2"
     }
 }
