@@ -1,3 +1,5 @@
+
+# Define action tags here
 machine_defaults: &machine_defaults
   machine: 
     image: circleci/classic:latest
@@ -8,6 +10,7 @@ get_cromwell: &get_cromwell
   command: |
     wget -N -c https://github.com/broadinstitute/cromwell/releases/download/34/cromwell-34.jar
 
+# Define jobs here
 version: 2
 jobs:
   build:
@@ -27,3 +30,14 @@ jobs:
       - run:
         command: |
           java -version
+
+# Define workflow here
+
+workflows:
+  version: 2
+  example_testing_workflow:
+    jobs:
+      - build
+      - run_test
+        requires:
+          - build
