@@ -28,8 +28,8 @@ jobs:
       - checkout
       - run: *get_cromwell
       - run:
-        command: |
-          java -version
+          command: |
+            java -version
 
 # Define workflow here
 
