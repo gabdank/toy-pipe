@@ -29,6 +29,7 @@ jobs:
       - run: *get_cromwell
       - run:
           command: |
+            pyenv global 3.5.2
             java -version
 
 # Define workflow here
