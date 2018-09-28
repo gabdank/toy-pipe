@@ -1,3 +1,13 @@
+machine_defaults: &machine_defaults
+  machine: 
+    image: circleci/classic:latest
+  working_directory: ~/toy_pipe
+
+get_cromwell: &get_cromwell
+  name: get the cromwell 34
+  command: |
+    wget -N -c https://github.com/broadinstitute/cromwell/releases/download/34/cromwell-34.jar
+
 version: 2
 jobs:
   build:
@@ -8,6 +18,12 @@ jobs:
       - run:
           name: Greeting
           command: echo Hello, world.
+  
+  run_test:
+    <<: *machine_defaults
+    steps:
+      - checkout
+      - run: *get_cromwell
       - run:
-          name: Print the Current Time
-          command: date
+        command: |
+          java -version
