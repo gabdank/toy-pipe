@@ -1,0 +1,6 @@
+{
+    "toy.fastqs": [
+        "/Users/idan/Desktop/TOY/read1.fastq.gz", "/Users/idan/Desktop/TOY/read2.fastq.gz"
+    ],
+    "toy.min_length": 50
+}
