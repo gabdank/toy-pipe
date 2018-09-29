@@ -21,16 +21,6 @@ jobs:
       - run:
           name: Greeting
           command: echo Hello, world.
-  
-  #run_test:
-  #  <<: *machine_defaults
-  #  steps:
-  #    - checkout
-  #    - run: *get_cromwell
-  #    - run:
-  #        command: |
-  #          pyenv global 3.5.2
-  #          java -version
 
   test_pair_trimming:
     <<: *machine_defaults
