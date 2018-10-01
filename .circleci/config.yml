@@ -42,5 +42,4 @@ workflows:
   example_testing_workflow:
     jobs:
       - build
-      - run_test
       - test_pair_trimming
